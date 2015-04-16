@@ -1,0 +1,76 @@
+Project Settings:
+
+{
+    id:<>,
+    package:<>,
+    name:<>,
+    description:<>,
+    repositories: [],
+    packager_id: <>,
+    observers:[
+        hubot:0,	//set to 1 to enable notification to hubot system
+        email:0,	//set to 1 to enable email notification
+        toolchain_api:1,      //set to 0 to disable notification to the toolchain api, default is 1
+        ...
+    ],
+    process_setting:{
+		staging_deployment:{
+			roles:[
+				'role1'
+			],
+			servers:["server1","server2","server3"]
+		},
+		production_deployment:{
+			roles:[],
+			servers:[]
+		},
+		packaging:{
+			role:["packager"],
+			//...
+		}
+		build:{
+			role:["jenkins-ci"],
+			url:<>,
+			project:<>,
+			jobname:<>,
+			token:<>
+		}
+    }
+}
+
+Update/Activity Log:
+{
+   id:<>,
+   version:<>,
+   env:<>,
+   process:<staging-deployment,production-deployment|packaging|build>,
+   activity:<staging deployment started - start|activity update|activity ended>, // override by context
+   status:<started|on-going|stopped|completed>, // override by context
+   date:<>,
+   sent_from:<>,
+   context:{}
+}
+
+Context:
+
+{
+   system_name:<>,
+   activities:[
+    {
+      activity_context:{
+           date:<>,
+           errors:[
+
+           ],
+           status:<>,
+           ...details...
+      }
+    },
+    {
+     ...any structure for now...
+    }
+   ],
+   status:<>,
+   latest_error:<>
+   
+}
